@@ -1,4 +1,10 @@
-// index.ts
+/**
+ * This module provides a function to filter an array of persons based on their type
+ * and specified criteria. It supports two types of persons: 'user' and 'admin'.
+ * The function returns an array of persons matching the specified type and criteria.
+ */
+
+// results.ts
 interface User {
     type: 'user';
     name: string;
@@ -15,6 +21,13 @@ interface Admin {
 
 type Person = User | Admin;
 
+/**
+ * Filters an array of persons based on their type and specified criteria.
+ * @param persons - The array of persons to filter.
+ * @param personType - The type of person to filter by ('user' or 'admin').
+ * @param criteria - The criteria to use for filtering.
+ * @returns An array of persons matching the specified type and criteria.
+ */
 function filterPersons<T extends Person['type']>(
     persons: Person[],
     personType: T,
@@ -31,6 +44,10 @@ function filterPersons<T extends Person['type']>(
     }) as T extends 'user' ? User[] : Admin[];
 }
 
+/**
+ * Main function to demonstrate the filtering functionality.
+ * It creates an array of persons and filters them based on type and criteria.
+ */
 function main() {
     // Example data for testing
     // I defined a list of persons with different types
